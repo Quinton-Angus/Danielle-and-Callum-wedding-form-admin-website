@@ -14,11 +14,9 @@ async function verify() {
     })
 
     if (verifyRequest.status === 500) {
-        // window.location.href = "./login.html"
-        console.log(500)
+        window.location.href = "./login.html"
     }  else if (verifyRequest.status === 401) {
-        // window.location.href = "./login.html"
-        console.log(400)
+        window.location.href = "./login.html"
     } else {
         disableLoading()
     }
