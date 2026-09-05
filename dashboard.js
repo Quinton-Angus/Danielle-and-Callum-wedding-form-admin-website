@@ -64,7 +64,9 @@ async function exportToPDF() {
     } else if (dataRequest.status === 200) {
         const data = await dataRequest.arrayBuffer()
         const uint8Array = new Uint8Array(data)
-        console.log("Converted data:", uint8Array)
+        const decodedText = new TextDecoder().decode(uint8Array)
+        const jsonData = JSON.parse(decodedText)
+        console.log("Decoded data:", jsonData)
         disableLoading()
     } else {
         console.log(dataRequest)
