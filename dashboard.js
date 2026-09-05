@@ -1,6 +1,6 @@
 function enableLoading() {
     const loading = document.getElementById("dashboardSpinner")
-    const content = document.getElementById("content")
+    const content = document.getElementById("dashboardContent")
     const header = document.getElementsByTagName("header")
     const footer = document.getElementsByTagName("footer")
 
@@ -13,7 +13,7 @@ function enableLoading() {
 
 function disableLoading() {
     const loading = document.getElementById("dashboardSpinner")
-    const content = document.getElementById("content")
+    const content = document.getElementById("dashboardContent")
     const header = document.getElementsByTagName("header")
     const footer = document.getElementsByTagName("footer")
 
