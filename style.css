@@ -370,7 +370,7 @@ footer {
     animation: submitSpinnerAnimation 1s ease-in-out infinite;
 }
 
-#content {
+.content {
     flex: 1;
     min-width: 100%;
     min-height: 100%;
