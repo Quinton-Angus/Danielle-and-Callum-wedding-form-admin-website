@@ -350,3 +350,13 @@ footer {
 .TYredText {
     color: var(--red);
 }
+
+#dashboardContainer {
+    width: 80%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+}
