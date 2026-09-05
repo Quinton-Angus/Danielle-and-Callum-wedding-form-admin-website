@@ -353,7 +353,7 @@ footer {
     color: var(--red);
 }
 
-#dashboardContainer{
+#dashboard{
     width: 80%;
     max-width: 800px;
     justify-content: flex-start;
@@ -370,7 +370,7 @@ footer {
     animation: submitSpinnerAnimation 1s ease-in-out infinite;
 }
 
-#dashboardContents {
+#content {
     flex: 1;
     min-width: 100%;
     min-height: 100%;
