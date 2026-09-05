@@ -1,8 +1,8 @@
 function enableLoading() {
     const loading = document.getElementById("dashboardSpinner")
     const content = document.getElementById("content")
-    const header = document.getElementsByName("header")
-    const footer = document.getElementsByName("footer")
+    const header = document.getElementsByTagName("header")
+    const footer = document.getElementsByTagName("footer")
 
     content.style.display = "none"
     header.style.display = "none"
@@ -14,8 +14,8 @@ function enableLoading() {
 function disableLoading() {
     const loading = document.getElementById("dashboardSpinner")
     const content = document.getElementById("content")
-    const header = document.getElementsByName("header")
-    const footer = document.getElementsByName("footer")
+    const header = document.getElementsByTagName("header")
+    const footer = document.getElementsByTagName("footer")
 
     loading.style.display = "none"
 
@@ -33,6 +33,8 @@ async function verify() {
         credentials: "include",
         headers: {"Content-Type":"application/json"}
     })
+
+    console.log(verifyRequest)
 
     if (verifyRequest.status === 500) {
         window.location.href = "./login.html"
