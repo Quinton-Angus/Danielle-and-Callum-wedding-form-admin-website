@@ -63,7 +63,8 @@ async function exportToPDF() {
         disableLoading()
     } else if (dataRequest.status === 200) {
         const data = await dataRequest.arrayBuffer()
-        console.log(new Uint8Array(data))
+        const uint8Array = new Uint8Array(data)
+        console.log("Converted data:", uint8Array)
         disableLoading()
     } else {
         console.log(dataRequest)
