@@ -65,7 +65,7 @@ submitBtn.addEventListener("click", async () => {
     const email = document.getElementById("emailInput")
     const password = document.getElementById("passwordInput")
 
-    const authRequest = await fetch("https://api.danielle-and-callum.quintondev.com/v1/auth", {
+    const authRequest = await fetch("https://api.danielle-and-callum.quintondev.com/v1/auth/login", {
         method: "POST",
         headers: {"Content-Type":"application/json"},
         body: JSON.stringify({
