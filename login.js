@@ -67,6 +67,7 @@ submitBtn.addEventListener("click", async () => {
 
     const authRequest = await fetch("https://api.danielle-and-callum.quintondev.com/v1/auth/login", {
         method: "POST",
+        credentials: "include",
         headers: {"Content-Type":"application/json"},
         body: JSON.stringify({
             data: {
