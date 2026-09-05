@@ -1,8 +1,8 @@
 function enableLoading() {
     const loading = document.getElementById("dashboardSpinner")
     const content = document.getElementById("dashboardContent")
-    const header = document.getElementsByTagName("header")
-    const footer = document.getElementsByTagName("footer")
+    const header = document.getElementsByTagName("header")[0]
+    const footer = document.getElementsByTagName("footer")[0]
 
     content.style.display = "none"
     header.style.display = "none"
@@ -14,8 +14,8 @@ function enableLoading() {
 function disableLoading() {
     const loading = document.getElementById("dashboardSpinner")
     const content = document.getElementById("dashboardContent")
-    const header = document.getElementsByTagName("header")
-    const footer = document.getElementsByTagName("footer")
+    const header = document.getElementsByTagName("header")[0]
+    const footer = document.getElementsByTagName("footer")[0]
 
     loading.style.display = "none"
 
