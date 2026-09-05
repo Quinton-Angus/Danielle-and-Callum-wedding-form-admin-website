@@ -53,4 +53,4 @@ async function exportToPDF() {
 
 const exportToPDFbtn = document.getElementById("exportToPDFbtn")
 
-exportToPDFbtn.addEventListener("click", exportToPDF())
+exportToPDFbtn.addEventListener("click", exportToPDF)
