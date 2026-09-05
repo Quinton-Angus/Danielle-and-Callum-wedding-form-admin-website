@@ -46,3 +46,7 @@ async function verify() {
 }
 
 verify()
+
+async function exportToPDF() {
+    enableLoading()
+}
