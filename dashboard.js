@@ -50,7 +50,7 @@ verify()
 async function exportToPDF() {
     enableLoading()
 
-    const dataRequest = await fetch("https://api.danielle-and-callum.quintondev.com", {
+    const dataRequest = await fetch("https://api.danielle-and-callum.quintondev.com/v1/data", {
         method: "POST",
         credentials: "include",
         headers: {"Content-Type":"application/json"}
