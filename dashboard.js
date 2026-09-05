@@ -49,6 +49,24 @@ verify()
 
 async function exportToPDF() {
     enableLoading()
+
+    const dataRequest = await fetch("https://api.danielle-and-callum.quintondev.com", {
+        method: "POST",
+        credentials: "include",
+        headers: {"Content-Type":"application/json"}
+    })
+
+    if (dataRequest.status === 401) {
+        window.location.href = "./login.html"
+    } else if (dataRequest.status === 500) {
+        console.log(dataRequest)
+        disableLoading()
+    } else if (dataRequest.status === 200) {
+
+    } else {
+        console.log(dataRequest)
+        disableLoading()
+    }
 }
 
 const exportToPDFbtn = document.getElementById("exportToPDFbtn")
