@@ -62,7 +62,7 @@ async function exportToPDF() {
         console.log(dataRequest)
         disableLoading()
     } else if (dataRequest.status === 200) {
-
+        console.log(dataRequest.data)
     } else {
         console.log(dataRequest)
         disableLoading()
