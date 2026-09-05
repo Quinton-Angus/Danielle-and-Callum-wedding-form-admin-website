@@ -62,7 +62,7 @@ async function exportToPDF() {
         console.log(dataRequest)
         disableLoading()
     } else if (dataRequest.status === 200) {
-        const data = dataRequest.data
+        const data = dataRequest
         console.log(data.toString("hex"))
     } else {
         console.log(dataRequest)
