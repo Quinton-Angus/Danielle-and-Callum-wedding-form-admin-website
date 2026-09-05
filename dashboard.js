@@ -1,12 +1,33 @@
+function enableLoading() {
+    const loading = document.getElementById("dashboardSpinner")
+    const content = document.getElementById("content")
+    const header = document.getElementsByName("header")
+    const footer = document.getElementsByName("footer")
+
+    content.style.display = "none"
+    header.style.display = "none"
+    footer.style.display = "none"
+
+    loading.style.display = "flex"
+}
+
 function disableLoading() {
     const loading = document.getElementById("dashboardSpinner")
-    const content = document.getElementById("dashboardContent")
+    const content = document.getElementById("content")
+    const header = document.getElementsByName("header")
+    const footer = document.getElementsByName("footer")
 
     loading.style.display = "none"
+
     content.style.display = "flex"
+    header.style.display = "flex"
+    footer.style.display = "flex"
 }
 
 async function verify() {
+
+    enableLoading()
+
     const verifyRequest = await fetch("https://api.danielle-and-callum.quintondev.com/v1/auth/verify", {
         method: "POST",
         credentials: "include",
