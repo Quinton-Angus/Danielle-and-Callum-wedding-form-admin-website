@@ -382,7 +382,6 @@ footer {
 }
 
 .exportBtn {
-    margin-top: 1.5rem;
     width: 12.5rem;
     height: 3.5rem;
     background: none;
@@ -392,5 +391,9 @@ footer {
     align-items: center;
     border-radius: 5px;
     cursor: pointer;
-    margin-bottom: 20rem;
+    margin-bottom: 3rem;
+}
+
+.dbTitle {
+    margin-bottom: 5rem;
 }
