@@ -62,8 +62,9 @@ async function exportToPDF() {
         console.log(dataRequest)
         disableLoading()
     } else if (dataRequest.status === 200) {
-        const data = dataRequest
-        console.log(data.toString("hex"))
+        const data = await dataRequest.arrayBuffer()
+        console.log(new Uint8Array(data))
+        disableLoading()
     } else {
         console.log(dataRequest)
         disableLoading()
