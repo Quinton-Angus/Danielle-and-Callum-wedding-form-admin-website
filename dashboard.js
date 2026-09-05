@@ -50,3 +50,7 @@ verify()
 async function exportToPDF() {
     enableLoading()
 }
+
+const exportToPDFbtn = document.getElementById("exportToPDFbtn")
+
+exportToPDFbtn.addEventListener("click", exportToPDF())
