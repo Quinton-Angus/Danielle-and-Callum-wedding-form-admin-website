@@ -1,3 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Guest Report</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
 <body>
-    
+    <main id="reportContent">
+        <h1>Danielle &amp; Callum</h1>
+        <h2>Wedding Guest Report</h2>
+        <div id="reportMeta"></div>
+        <div id="reportError"></div>
+        <table id="guestTable">
+            <thead>
+                <tr>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Additional names</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody id="guestTableBody"></tbody>
+        </table>
+    </main>
+
+    <script>
+        const data = JSON.parse(sessionStorage.getItem("weddingGuestReportData") || "null")
+        const body = document.getElementById("guestTableBody")
+        const meta = document.getElementById("reportMeta")
+        const reportError = document.getElementById("reportError")
+
+        if (!Array.isArray(data)) {
+            reportError.textContent = "Unable to load report data. Return to the dashboard and try again."
+        } else {
+            meta.textContent = `${data.length} guest${data.length === 1 ? "" : "s"} · Generated ${new Date().toLocaleString()}`
+
+            data.forEach(guest => {
+                const row = document.createElement("tr")
+                ;[guest.firstName, guest.lastName, guest.additionalNames, guest.email].forEach(value => {
+                    const cell = document.createElement("td")
+                    cell.textContent = value ?? ""
+                    row.appendChild(cell)
+                })
+                body.appendChild(row)
+            })
+        }
+    </script>
 </body>
+</html>
