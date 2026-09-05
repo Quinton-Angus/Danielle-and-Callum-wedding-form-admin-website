@@ -1,14 +1,89 @@
+async function verify() {
+    enableLoading()
+
+    try {
+        const verifyRequest = await fetch("https://api.danielle-and-callum.quintondev.com/v1/auth/verify", {
+            method: "POST",
+            credentials: "include",
+            headers: { "Content-Type": "application/json" }
+        })
+
+        if (verifyRequest.status === 200) {
+            disableLoading()
+            return
+        }
+
+        if (verifyRequest.status === 401) {
+            window.location.href = "./login.html"
+            return
+        }
+
+        console.error("Authentication verification failed:", verifyRequest.status)
+        window.location.href = "./login.html"
+    } catch (err) {
+        console.error("Authentication verification failed:", err)
+        window.location.href = "./login.html"
+    }
+}
+
+async function exportToPDF() {
+    enableLoading()
+
+    try {
+        const dataRequest = await fetch("https://api.danielle-and-callum.quintondev.com/v1/data", {
+            method: "POST",
+            credentials: "include",
+            headers: { "Content-Type": "application/json" }
+        })
+
+        if (dataRequest.status === 401) {
+            window.location.href = "./login.html"
+            return
+        }
+
+        if (!dataRequest.ok) {
+            console.error("Failed to retrieve guest data:", dataRequest.status)
+            disableLoading()
+            return
+        }
+
+        const jsonData = await dataRequest.json()
+
+        if (jsonData.status !== true || !Array.isArray(jsonData.data)) {
+            console.error("API returned an invalid data response:", jsonData)
+            disableLoading()
+            return
+        }
+
+        console.log("Decoded data:", jsonData.data)
+
+        const reportWindow = window.open("./report.html", "_blank")
+        if (!reportWindow) {
+            console.error("Unable to open the report window.")
+            disableLoading()
+            return
+        }
+
+        reportWindow.name = "weddingGuestReport"
+        sessionStorage.setItem("weddingGuestReportData", JSON.stringify(jsonData.data))
+        reportWindow.location.href = "./report.html"
+    } catch (err) {
+        console.error("Guest data request failed:", err)
+    } finally {
+        disableLoading()
+    }
+}
+
 function enableLoading() {
     const loading = document.getElementById("dashboardSpinner")
     const content = document.getElementById("dashboardContent")
     const header = document.getElementsByTagName("header")[0]
     const footer = document.getElementsByTagName("footer")[0]
 
-    content.style.display = "none"
-    header.style.display = "none"
-    footer.style.display = "none"
-
-    loading.style.display = "flex"
+    if (content) content.style.display = "none"
+    if (header) header.style.display = "none"
+    if (footer) footer.style.display = "none"
+    if (loading) loading.style.display = "flex"
 }
 
 function disableLoading() {
@@ -17,63 +92,14 @@ function disableLoading() {
     const header = document.getElementsByTagName("header")[0]
     const footer = document.getElementsByTagName("footer")[0]
 
-    loading.style.display = "none"
-
-    content.style.display = "flex"
-    header.style.display = "flex"
-    footer.style.display = "flex"
-}
-
-async function verify() {
-
-    enableLoading()
-
-    const verifyRequest = await fetch("https://api.danielle-and-callum.quintondev.com/v1/auth/verify", {
-        method: "POST",
-        credentials: "include",
-        headers: {"Content-Type":"application/json"}
-    })
-
-    console.log(verifyRequest)
-
-    if (verifyRequest.status === 500) {
-        window.location.href = "./login.html"
-    }  else if (verifyRequest.status === 401) {
-        window.location.href = "./login.html"
-    } else {
-        disableLoading()
-    }
-}
-
-verify()
-
-async function exportToPDF() {
-    enableLoading()
-
-    const dataRequest = await fetch("https://api.danielle-and-callum.quintondev.com/v1/data", {
-        method: "POST",
-        credentials: "include",
-        headers: {"Content-Type":"application/json"}
-    })
-
-    if (dataRequest.status === 401) {
-        window.location.href = "./login.html"
-    } else if (dataRequest.status === 500) {
-        console.log(dataRequest)
-        disableLoading()
-    } else if (dataRequest.status === 200) {
-        const data = await dataRequest.arrayBuffer()
-        const uint8Array = new Uint8Array(data)
-        const decodedText = new TextDecoder().decode(uint8Array)
-        const jsonData = JSON.parse(decodedText)
-        console.log("Decoded data:", jsonData)
-        disableLoading()
-    } else {
-        console.log(dataRequest)
-        disableLoading()
-    }
+    if (loading) loading.style.display = "none"
+    if (content) content.style.display = "flex"
+    if (header) header.style.display = "flex"
+    if (footer) footer.style.display = "flex"
 }
 
 const exportToPDFbtn = document.getElementById("exportToPDFbtn")
 
-exportToPDFbtn.addEventListener("click", exportToPDF)
+exportToPDFbtn?.addEventListener("click", exportToPDF)
+
+verify()
