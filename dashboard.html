@@ -10,7 +10,7 @@
     <body>
         <header>
             <div id="headerDesktop">
-                <img src="./assets/QDS logo red.svg">
+                <img src="./assets/QDS logo red.svg" alt="Quinton Dev Studios">
                 <a href="https://admin.danielle-and-callum.quintondev.com"><div class="headerLink">Admin portal</div></a>
                 <a href="https://form.danielle-and-callum.quintondev.com"><div class="headerLink">Information form</div></a>
                 <a href="https://admin.danielle-and-callum.quintondev.com/login"><div class="headerLinkActive">Login</div></a>
@@ -19,25 +19,46 @@
             <div id="headerMobileWrapper">
                 <div class="headerMobileDeactivated" id="headerMobile">
                     <div id="headerMobileHamburgerClose"></div>
-                    <a href="https://admin.danielle-and-callum.quintondev.com"><div class="headerLink ">Admin portal</div></a>
-                    <a href="https://form.danielle-and-callum.quintondev.com"><div class="headerLinkActive " >Information form</div></a>
-                    <a href="https://admin.danielle-and-callum.quintondev.com/login"><div class="headerLink ">Login</div></a>
-                    <a href="mailto:support@quintondev.com"><div class="headerLink ">Support</div></a>           
+                    <a href="https://admin.danielle-and-callum.quintondev.com"><div class="headerLink">Admin portal</div></a>
+                    <a href="https://form.danielle-and-callum.quintondev.com"><div class="headerLinkActive">Information form</div></a>
+                    <a href="https://admin.danielle-and-callum.quintondev.com/login"><div class="headerLink">Login</div></a>
+                    <a href="mailto:support@quintondev.com"><div class="headerLink">Support</div></a>
                 </div>
-
                 <div id="headerMobileHamburger"></div>
             </div>
         </header>
         <div id="dashboardContent">
             <div id="dashboard">
                 <div class="dbTitle">Dashboard</div>
-                <div class="exportBtn" id="exportToPDFbtn">Export to PDF</div>
-                <div class="exportBtn">Export to email</div>
+                <button class="exportBtn" id="exportToPDFbtn" type="button">Export to PDF</button>
+                <button class="exportBtn" id="exportToEmailBtn" type="button">Export to email</button>
             </div>
         </div>
+
+        <div class="emailDialog" id="emailExportDialog" hidden>
+            <div class="emailDialogPanel" role="dialog" aria-modal="true" aria-labelledby="emailDialogTitle">
+                <div class="emailDialogBrand">
+                    <img src="./assets/QDS logo red.svg" alt="">
+                    <span>QUINTON DEV STUDIOS</span>
+                </div>
+                <h1 id="emailDialogTitle">Email guest results</h1>
+                <p class="emailDialogDescription">Send the latest wedding guest results as a professionally formatted PDF attachment.</p>
+                <form id="emailExportForm">
+                    <label for="reportRecipient">Recipient email address</label>
+                    <input id="reportRecipient" name="email" type="email" autocomplete="email"
+                        placeholder="name@example.com" maxlength="254" required>
+                    <div id="emailExportStatus" class="emailExportStatus" role="status" aria-live="polite"></div>
+                    <div class="emailDialogActions">
+                        <button class="emailDialogCancel" id="cancelEmailExport" type="button">Cancel</button>
+                        <button class="emailDialogSend" id="sendEmailExport" type="submit">Send report</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
         <footer>
             <div id="footerBranding">
-                <img src="./assets/QDS_full_logo.svg" id="footerLogo">
+                <img src="./assets/QDS_full_logo.svg" id="footerLogo" alt="Quinton Dev Studios">
                 <div id="footerBrandDivider"></div>
                 <div class="footerBrandDetail">Web: <span class="footerBrandDetailReg">www.quintondev.com</span></div>
                 <div class="footerBrandDetail">Email: <span class="footerBrandDetailReg">support@quintondev.com</span></div>
